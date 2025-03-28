@@ -632,7 +632,7 @@ function b6(h, f) {
         },
     ]
     l[0].a0 = a
-    l = DB(tV, l[0])
+    l = bindFunctionWithContext(tV, l[0])
     f.onload = l
     f.send()
     if ((a.i0 & 255) !== 0) {
@@ -769,7 +769,7 @@ function tM(G, E, C, A, x) {
                     },
                 ]
                 r[0].a0 = h
-                r = DB(h5, r[0])
+                r = bindFunctionWithContext(h5, r[0])
                 f.onmessage = r
                 if (a !== null) f.send(a)
                 if ((h.i0 & 255) !== 0) {
@@ -799,7 +799,7 @@ function tM(G, E, C, A, x) {
                             },
                         ]
                         a[0].a0 = u
-                        a = DB(h1, a[0])
+                        a = bindFunctionWithContext(h1, a[0])
                         f.onmessage = a
                         if ((u.i0 & 255) === 0) {
                             c.i13 = 1
@@ -902,7 +902,7 @@ function tJ(p, q) {
                                 },
                             ]
                             a[0].a0 = c
-                            a = DB(h1, a[0])
+                            a = bindFunctionWithContext(h1, a[0])
                             f.onmessage = a
                             if ((c.i0 & 255) !== 0) {
                                 h = -1
@@ -938,7 +938,7 @@ function tJ(p, q) {
                     },
                 ]
                 n[0].a0 = j
-                n = DB(h5, n[0])
+                n = bindFunctionWithContext(h5, n[0])
                 f.onmessage = n
                 if (a !== null) f.send(a)
                 if ((j.i0 & 255) !== 0) {
@@ -1625,7 +1625,7 @@ function s9(C, E, G, H, K, L, O) {
             },
         ]
         u[0].a0 = j
-        u = DB(bv, u[0])
+        u = bindFunctionWithContext(bv, u[0])
         cheerpOSClose(x, a, u)
         if ((j.i0 & 255) !== 0) {
             h.a3 = r
@@ -1757,7 +1757,7 @@ function s6(r, s) {
                     },
                 ]
                 n[0].a0 = j
-                n = DB(bv, n[0])
+                n = bindFunctionWithContext(bv, n[0])
                 cheerpOSClose(x, a, n)
                 if ((j.i0 & 255) !== 0) {
                     c.a3 = p
@@ -1885,7 +1885,7 @@ function aB(l, j, h, f, c, a) {
         },
     ]
     A[0].a0 = p
-    A = DB(sB, A[0])
+    A = bindFunctionWithContext(sB, A[0])
     cheerpOSOpenMain(h, G, E, f, c, a, A)
     if ((p.i0 & 255) !== 0) {
         r = p.i1 | 0
@@ -1956,7 +1956,7 @@ function aX(j, h, f, c, a) {
         },
     ]
     x[0].a0 = n
-    x = DB(iu, x[0])
+    x = bindFunctionWithContext(iu, x[0])
     cheerpOSWrite(C, h, f, c, a, x)
     if ((n.i0 & 255) !== 0) {
         p = n.i1 | 0
@@ -2185,7 +2185,7 @@ function bq(j, h, f, c, a) {
         },
     ]
     x[0].a0 = n
-    x = DB(iu, x[0])
+    x = bindFunctionWithContext(iu, x[0])
     cheerpOSRead(C, h, f, c, a, x)
     if ((n.i0 & 255) !== 0) {
         p = n.i1 | 0
@@ -2313,7 +2313,7 @@ function a4(f, c, a) {
         },
     ]
     n[0].a0 = u
-    n = DB(sg, n[0])
+    n = bindFunctionWithContext(sg, n[0])
     cheerpOSStatMain(A, a, r, n)
     if ((u.i0 & 255) !== 0) {
         j = h.a5
@@ -2796,7 +2796,7 @@ function Df(u, r) {
     ]
     l = h.a2
     f[0].a0 = l
-    f = DB(qj, f[0])
+    f = bindFunctionWithContext(qj, f[0])
     p = new Promise(f)
     a = "r"
     h.a4 = a
@@ -2877,7 +2877,7 @@ function De(G, H, K) {
     ]
     C = h.a2
     f[0].a0 = C
-    f = DB(qr, f[0])
+    f = bindFunctionWithContext(qr, f[0])
     E = new Promise(f)
     f = "/".concat(H)
     h.a6 = f
@@ -2971,7 +2971,7 @@ function De(G, H, K) {
             },
         ]
         r[0].a0 = l
-        r = DB(bv, r[0])
+        r = bindFunctionWithContext(bv, r[0])
         cheerpOSClose(x, a, r)
         if ((l.i0 & 255) !== 0) {
             c.a3 = j
@@ -3414,7 +3414,7 @@ function hz(A, x) {
         c[0].a0 = r
         c[0].a1.a0 = h
         c[0].a1.a0o = 0
-        r = DB(ek, c[0])
+        r = bindFunctionWithContext(ek, c[0])
         l.then(r)
     }
 }
@@ -3814,7 +3814,7 @@ function b$(f, c, a) {
         },
     ]
     p[0].a0 = j
-    p = DB(uK, p[0])
+    p = bindFunctionWithContext(uK, p[0])
     cheerpOSGetFileBlobFd(x, c, a, p)
     if ((j.i0 & 255) !== 0) {
         l = j.a1
@@ -4005,7 +4005,7 @@ function uB(G, E, C, A) {
         a[0].a0 = h
         a[0].a1.a0 = f
         a[0].a1.a0o = 0
-        h = DB(ek, a[0])
+        h = bindFunctionWithContext(ek, a[0])
         n.then(h)
     }
 }
@@ -4400,7 +4400,7 @@ function hd(x, u, r) {
         },
     ]
     h[0].a0 = n
-    h = DB(qz, h[0])
+    h = bindFunctionWithContext(qz, h[0])
     cheerpOSListFilesMain(A, r, l, h)
     if ((n.i0 & 255) !== 0) {
         c = a.a5
@@ -4518,7 +4518,7 @@ function c2(j, h, f) {
         },
     ]
     r[0].a0 = c
-    r = DB(qH, r[0])
+    r = bindFunctionWithContext(qH, r[0])
     cheerpOSUnlinkMain(x, f, r)
     if ((c.i0 & 255) !== 0) {
         l = c.i1 | 0
@@ -4692,7 +4692,7 @@ function qu(A, B) {
                                 },
                             ]
                             n[0].a0 = p
-                            n = DB(bv, n[0])
+                            n = bindFunctionWithContext(bv, n[0])
                             cheerpOSClose(l, a, n)
                             if ((p.i0 & 255) !== 0) {
                                 f.a3 = r
@@ -5664,7 +5664,7 @@ function p1(u, v) {
                         },
                     ]
                     n[0].a0 = f
-                    n = DB(bv, n[0])
+                    n = bindFunctionWithContext(bv, n[0])
                     cheerpOSClose(l, a, n)
                     if ((f.i0 & 255) !== 0) {
                         c.a3 = r
@@ -5791,7 +5791,7 @@ function aV(c, a) {
         },
     ]
     l[0].a0 = h
-    l = DB(bv, l[0])
+    l = bindFunctionWithContext(bv, l[0])
     cheerpOSClose(r, a, l)
     if ((h.i0 & 255) !== 0) {
         f.a3 = p
@@ -6363,7 +6363,7 @@ function pP(E, G, K, L) {
                 },
             ]
             p[0].a0 = c
-            p = DB(pJ, p[0])
+            p = bindFunctionWithContext(pJ, p[0])
             a.onmessage = p
             a.onerror = p
             if ((c.i0 & 255) === 0) {
@@ -6478,7 +6478,7 @@ function pP(E, G, K, L) {
                 },
             ]
             a[0].a0 = n
-            a = DB(hH, a[0])
+            a = bindFunctionWithContext(hH, a[0])
             window.addEventListener(j, a)
         }
         j = f.a7
@@ -6636,7 +6636,7 @@ function pM(C, D) {
                 },
             ]
             a[0].a0 = h
-            a = DB(hH, a[0])
+            a = bindFunctionWithContext(hH, a[0])
             window.addEventListener(c, a)
         }
         c = C.a7
@@ -7314,7 +7314,7 @@ function s2(A, x) {
         f[0].a0 = h
         f[0].a1.a0 = l
         f[0].a1.a0o = 0
-        h = DB(ek, f[0])
+        h = bindFunctionWithContext(ek, f[0])
         c.then(h)
     }
 }
@@ -7469,7 +7469,7 @@ function hN(E, C, A, x, u, r) {
         },
     ]
     h[0].a0 = n
-    h = DB(sR, h[0])
+    h = bindFunctionWithContext(sR, h[0])
     cheerpOSCreateDirMain(G, A, l, x, u, r, h)
     if ((n.i0 & 255) !== 0) {
         c = a.a5
@@ -7568,7 +7568,7 @@ function rW(x, u, r, p) {
         },
     ]
     l[0].a0 = c
-    l = DB(hB, l[0])
+    l = bindFunctionWithContext(hB, l[0])
     cheerpOSLinkMain(A, r, p, l)
     if ((c.i0 & 255) !== 0) {
         f = c.i1 | 0
@@ -7667,7 +7667,7 @@ function rQ(x, u, r, p) {
         },
     ]
     l[0].a0 = c
-    l = DB(hB, l[0])
+    l = bindFunctionWithContext(hB, l[0])
     cheerpOSRenameMain(A, r, p, l)
     if ((c.i0 & 255) !== 0) {
         f = c.i1 | 0
@@ -8118,7 +8118,7 @@ function sH(A, B) {
                                         },
                                     ]
                                     p[0].a0 = f
-                                    p = DB(bv, p[0])
+                                    p = bindFunctionWithContext(bv, p[0])
                                     cheerpOSClose(c, a, p)
                                     if ((f.i0 & 255) !== 0) {
                                         n.a3 = u
@@ -8206,7 +8206,7 @@ function sH(A, B) {
                     },
                 ]
                 c[0].a0 = n
-                c = DB(bv, c[0])
+                c = bindFunctionWithContext(bv, c[0])
                 cheerpOSClose(f, a, c)
                 if ((n.i0 & 255) !== 0) {
                     h.a3 = p
@@ -8375,7 +8375,7 @@ function Cu() {
         },
     ]
     a[0].a0 = c
-    a = DB(gq, a[0])
+    a = bindFunctionWithContext(gq, a[0])
     c.a2 = a
     return c
 }
@@ -8437,7 +8437,7 @@ function Cr() {
         },
     ]
     a[0].a0 = c
-    a = DB(gq, a[0])
+    a = bindFunctionWithContext(gq, a[0])
     c.a2 = a
     a = new Object()
     h = new Promise(function (f, r) {
@@ -8503,7 +8503,7 @@ function tA(p, n) {
             },
         ]
         c[0].a0 = p
-        c = DB(th, c[0])
+        c = bindFunctionWithContext(th, c[0])
         document.addEventListener(a, c)
         a = "keyup"
         c = [
@@ -8512,7 +8512,7 @@ function tA(p, n) {
             },
         ]
         c[0].a0 = p
-        c = DB(te, c[0])
+        c = bindFunctionWithContext(te, c[0])
         document.addEventListener(a, c)
     } else if ((n.type | 0) === 4) n5(n.value)
     else if ((n.type | 0) === 5) {
@@ -8767,7 +8767,7 @@ function d9(x, u) {
                 c[0].a0 = x
                 c[0].i1 = j
                 c[0].a2 = h
-                c = DB(vc, c[0])
+                c = bindFunctionWithContext(vc, c[0])
                 f = [
                     {
                         a0: null,
@@ -8776,7 +8776,7 @@ function d9(x, u) {
                 ]
                 f[0].a0 = x
                 f[0].a1 = h
-                f = DB(u$, f[0])
+                f = bindFunctionWithContext(u$, f[0])
                 l.then(c, f)
                 a = a[0]
             } else if ((u.type | 0) === 14) {
@@ -8945,7 +8945,7 @@ function d9(x, u) {
             f.a1 = vg
             f.a7 = x
             f.a6 = a
-            h = getStackTraceUrl()
+            h = getCurrentPath()
             h = h.concat("workerclock.js")
             f.a8 = h
             h = fetch(h)
@@ -8965,7 +8965,7 @@ function d9(x, u) {
             f[0].a0 = l
             f[0].a1.a0 = c
             f[0].a1.a0o = 0
-            l = DB(io, f[0])
+            l = bindFunctionWithContext(io, f[0])
             h.then(l)
         } else ij(a, x)
     }
@@ -9000,7 +9000,7 @@ function vh(l, m) {
             },
         ]
         j[0].a0 = a
-        a = DB(m5, j[0])
+        a = bindFunctionWithContext(m5, j[0])
         f.onmessage = a
         a = h.port2
         h = c.a1.buffer
@@ -9032,7 +9032,7 @@ function vh(l, m) {
         c[0].a0 = f
         c[0].a1.a0 = l
         c[0].a1.a0o = m
-        c = DB(f0, c[0])
+        c = bindFunctionWithContext(f0, c[0])
         a.then(c)
     }
 }
@@ -9041,7 +9041,7 @@ function vg(a, b) {
     var c = null
     if (!(a.i5 | 0)) c = a.a8
 }
-function getStackTraceUrl() {
+function getCurrentPath() {
     // Initialize variables
     let stackTrace = []
     let errorLocation = 0
@@ -9156,7 +9156,7 @@ function ii(n, l, j, h) {
     a.a6 = l
     c = a.a2.a[a.a2.o - 1]
     n.a0 = c
-    c = getStackTraceUrl()
+    c = getCurrentPath()
     a.a9 = c
     c = c.concat(j)
     c = c
@@ -9178,7 +9178,7 @@ function ii(n, l, j, h) {
     a[0].a0 = f
     a[0].a1.a0 = p
     a[0].a1.a0o = 0
-    f = DB(io, a[0])
+    f = bindFunctionWithContext(io, a[0])
     c.then(f)
 }
 function vc(j, h) {
@@ -9910,7 +9910,7 @@ function ne(n, o) {
         a[0].a0 = h
         a[0].a1.a0 = n
         a[0].a1.a0o = o
-        a = DB(f0, a[0])
+        a = bindFunctionWithContext(f0, a[0])
         c.then(a)
     }
 }
@@ -10139,7 +10139,7 @@ function fR(l) {
         },
     ]
     c[0].a0 = l
-    c = DB(mT, c[0])
+    c = bindFunctionWithContext(mT, c[0])
     a.onclick = c
     a = "div"
     c = document.createElement(a)
@@ -10191,7 +10191,7 @@ function fR(l) {
         },
     ]
     c[0].a0 = l
-    c = DB(mQ, c[0])
+    c = bindFunctionWithContext(mQ, c[0])
     a.onclick = c
     a = l.a22
     c = [
@@ -10200,7 +10200,7 @@ function fR(l) {
         },
     ]
     c[0].a0 = l
-    c = DB(mN, c[0])
+    c = bindFunctionWithContext(mN, c[0])
     a.onclick = c
     bU(l, null)
     a = document.body
@@ -10212,7 +10212,7 @@ function fR(l) {
         },
     ]
     c[0].a0 = l
-    c = DB(mK, c[0])
+    c = bindFunctionWithContext(mK, c[0])
     a.onclick = c
     a = l.a13
     c = [
@@ -10221,7 +10221,7 @@ function fR(l) {
         },
     ]
     c[0].a0 = l
-    c = DB(uH, c[0])
+    c = bindFunctionWithContext(uH, c[0])
     a.onchange = c
     dL(l)
     a = {
@@ -10237,7 +10237,7 @@ function fR(l) {
         },
     ]
     a[0].a0 = l
-    a = DB(mG, a[0])
+    a = bindFunctionWithContext(mG, a[0])
     ;+setInterval(a, 1000)
 }
 function mV(a) {
@@ -10440,7 +10440,7 @@ function dw(h, f, c) {
     }
     a: {
         if ((j | 0) !== 3) {
-            a = getStackTraceUrl()
+            a = getCurrentPath()
             a = a.concat("./tun/tailscale_tun_auto.js")
             l = import(a)
             a = mA
@@ -10468,7 +10468,7 @@ function cH() {
     })
     l = a.fullfill
     j = a.reject
-    a = getStackTraceUrl()
+    a = getCurrentPath()
     aQ = 1
     a = a.concat("cheerpOS.js")
     f2 = "script"
@@ -10484,7 +10484,7 @@ function cH() {
     a[0].a0 = h
     a[0].a1 = l
     a[0].a2 = j
-    a = DB(mw, a[0])
+    a = bindFunctionWithContext(mw, a[0])
     c.onload = a
     document.head.appendChild(c)
     return h
@@ -10517,7 +10517,7 @@ function dv(c) {
     var f = null,
         a = null
     if (c.a8 !== null) {
-        a = getStackTraceUrl()
+        a = getCurrentPath()
         a = a.concat("cxbridge.js")
         c.a6 = new Worker(a)
         c.a6.onmessage = c.a2
@@ -15718,7 +15718,7 @@ function CE(r, p, n, l) {
     ]
     c[0].a0 = r
     c[0].d1 = h
-    c = DB(kS, c[0])
+    c = bindFunctionWithContext(kS, c[0])
     r.a34 = c
     c = kQ
     r.a35 = c
@@ -15730,7 +15730,7 @@ function CE(r, p, n, l) {
     ]
     c[0].a0 = r
     c[0].d1 = h
-    c = DB(kO, c[0])
+    c = bindFunctionWithContext(kO, c[0])
     r.a36 = c
     c = [
         {
@@ -15738,7 +15738,7 @@ function CE(r, p, n, l) {
         },
     ]
     c[0].a0 = r
-    c = DB(kL, c[0])
+    c = bindFunctionWithContext(kL, c[0])
     r.a37 = c
     c = [
         {
@@ -15748,7 +15748,7 @@ function CE(r, p, n, l) {
     ]
     c[0].a0 = r
     c[0].d1 = h
-    j = DB(kI, c[0])
+    j = bindFunctionWithContext(kI, c[0])
     c = [
         {
             a0: null,
@@ -15757,7 +15757,7 @@ function CE(r, p, n, l) {
     ]
     c[0].a0 = r
     c[0].d1 = h
-    c = DB(kF, c[0])
+    c = bindFunctionWithContext(kF, c[0])
     a = "mousemove"
     p.addEventListener(a, r.a34)
     a = "mousedown"
@@ -15899,7 +15899,7 @@ function CC(j, h, f, c) {
         },
     ]
     a[0].a0 = j
-    a = DB(k8, a[0])
+    a = bindFunctionWithContext(k8, a[0])
     return a
 }
 function CB(l, j, h, f) {
@@ -15925,7 +15925,7 @@ function CB(l, j, h, f) {
         },
     ]
     a[0].a0 = c
-    a = DB(lu, a[0])
+    a = bindFunctionWithContext(lu, a[0])
     j.onload = a
     a = c.a3
     j.src = a
@@ -15935,7 +15935,7 @@ function CB(l, j, h, f) {
         },
     ]
     a[0].a0 = c
-    a = DB(lr, a[0])
+    a = bindFunctionWithContext(lr, a[0])
     c.i5 = ~~+setInterval(a, 1.0e4)
 }
 function CA(l, j) {
@@ -15972,7 +15972,7 @@ function Cz(f, c) {
         },
     ]
     a[0].a0 = f
-    a = DB(ok, a[0])
+    a = bindFunctionWithContext(ok, a[0])
     return a
 }
 function Cy(n, l, j) {
@@ -16578,7 +16578,7 @@ function mb(u) {
         },
     ]
     a[0].a0 = r
-    a = DB(l6, a[0])
+    a = bindFunctionWithContext(l6, a[0])
     x = new Promise(a)
     a = u.a0.a43
     f = a.a1
@@ -16662,7 +16662,7 @@ function mb(u) {
             l[0].a0 = a
             l[0].a1 = j
             l[0].a2 = f
-            j = DB(fs, l[0])
+            j = bindFunctionWithContext(fs, l[0])
             a = a.then(j)
         }
         r.a0.call(null, a)
@@ -16734,7 +16734,7 @@ function l9(p, q) {
         h[0].a0 = c
         h[0].a1 = l
         h[0].a2 = f
-        f = DB(fs, h[0])
+        f = bindFunctionWithContext(fs, h[0])
         c = c.then(f)
     }
     p.a2.a0.call(null, c)
@@ -16767,7 +16767,7 @@ function fs(f, c) {
     ]
     a[0].a0 = h
     a[0].a1 = j
-    h = DB(lY, a[0])
+    h = bindFunctionWithContext(lY, a[0])
     return l.then(h)
 }
 function lY(c, a) {
@@ -17028,7 +17028,7 @@ function lW(f) {
         },
     ]
     a[0].a0 = f
-    a = DB(lU, a[0])
+    a = bindFunctionWithContext(lU, a[0])
     f.a2 = a
 }
 function lU(c, a) {
@@ -17383,7 +17383,7 @@ function lS(E, C) {
                     f[0].a1 = j
                     f[0].a2 = a
                     f[0].a3 = E
-                    f = DB(pb, f[0])
+                    f = bindFunctionWithContext(pb, f[0])
                     a.connect(c, p, f)
                     break a
                 }
@@ -17416,7 +17416,7 @@ function lS(E, C) {
             j[0].a1 = f
             j[0].i2 = c
             j[0].a3 = E
-            j = DB(o9, j[0])
+            j = bindFunctionWithContext(o9, j[0])
             f.listen(j)
             j = [null]
             j[0] = f
@@ -17752,7 +17752,7 @@ function pb(j, h) {
         ]
         a[0].a0 = c
         a[0].a1 = f
-        f = DB(oK, a[0])
+        f = bindFunctionWithContext(oK, a[0])
         c.onmessage = f
         c = j.a2
         f = j.a1
@@ -17764,7 +17764,7 @@ function pb(j, h) {
         ]
         a[0].a0 = f
         a[0].a1 = c
-        f = DB(oH, a[0])
+        f = bindFunctionWithContext(oH, a[0])
         c.recv(f)
     }
     c = {
@@ -17881,7 +17881,7 @@ function oU(x, u, r, p, n, l) {
             ]
             a[0].a0 = c
             a[0].a1 = f
-            a = DB(gJ, a[0])
+            a = bindFunctionWithContext(gJ, a[0])
             f.recv(a)
             a = [
                 {
@@ -17891,7 +17891,7 @@ function oU(x, u, r, p, n, l) {
             ]
             a[0].a0 = c
             a[0].a1 = f
-            f = DB(gG, a[0])
+            f = bindFunctionWithContext(gG, a[0])
             c.onmessage = f
         } else {
             console.log("null port")
@@ -17920,7 +17920,7 @@ function oR(j, k) {
         ]
         c[0].a0 = f
         c[0].a1 = a
-        c = DB(gJ, c[0])
+        c = bindFunctionWithContext(gJ, c[0])
         a.recv(c)
         c = [
             {
@@ -17930,7 +17930,7 @@ function oR(j, k) {
         ]
         c[0].a0 = f
         c[0].a1 = a
-        a = DB(gG, c[0])
+        a = bindFunctionWithContext(gG, c[0])
         f.onmessage = a
     } else {
         console.log("null port")
@@ -20022,7 +20022,7 @@ function lu(j) {
         },
     ]
     h[0].a0 = a
-    a = DB(lo, h[0])
+    a = bindFunctionWithContext(lo, h[0])
     c.onmessage = a
     f = f.port2
     c = j.a0
@@ -20150,7 +20150,7 @@ function lh(u, r, p, n, l) {
                 },
             ]
             c[0].a0 = a
-            a = DB(fa, c[0])
+            a = bindFunctionWithContext(fa, c[0])
             h.onmessage = a
             h.postMessage(j)
         } else a.a5.postMessage(null)
@@ -20202,7 +20202,7 @@ function le(l, m) {
             },
         ]
         a[0].a0 = c
-        a = DB(fa, a[0])
+        a = bindFunctionWithContext(fa, a[0])
         f.onmessage = a
         f.postMessage(h)
     } else l.a5.postMessage(null)
@@ -20774,7 +20774,7 @@ function kD(C, A) {
         },
     ]
     f[0].a0 = l
-    f = DB(kB, f[0])
+    f = bindFunctionWithContext(kB, f[0])
     ;+setTimeout(f, 0)
     x = +A.keyCode
     n = +A.timeStamp
@@ -24612,7 +24612,7 @@ function jz(h, f) {
         },
     ]
     a[0].a0 = h
-    a = DB(jv, a[0])
+    a = bindFunctionWithContext(jv, a[0])
     f.addEventListener(c, a)
     c = "keydown"
     a = [
@@ -24621,7 +24621,7 @@ function jz(h, f) {
         },
     ]
     a[0].a0 = h
-    a = DB(js, a[0])
+    a = bindFunctionWithContext(js, a[0])
     f.addEventListener(c, a)
 }
 function jv(f, c) {
@@ -30064,7 +30064,7 @@ function DD(r, s, e, v) {
     for (var i = s; i < e; i++) r[i] = v
     return r
 }
-function DB(func, obj) {
+function bindFunctionWithContext(func, obj) {
     return function (...args) {
         var a = Array.prototype.slice.call(args)
         a.unshift(obj)
