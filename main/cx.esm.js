@@ -26879,24 +26879,24 @@ function ea(c, d, a) {
     )
     ab()
 }
-function tn(c, a) {
+function tn(c, a, ...args) {
     var h = null,
         f = null
     h = [nullObj]
     h[0] = {
-        d: arguments,
+        d: [c, a, ...args],
         o: tn.length,
     }
     f = h[0]
     fL(vL, iF, 0, f.d, f.o)
     h[0] = null
 }
-function bd(a, b) {
+function bd(a, b, ...args) {
     var f = null,
         c = null
     f = [nullObj]
     f[0] = {
-        d: arguments,
+        d: [a, b, ...args],
         o: bd.length,
     }
     c = f[0]
@@ -30049,15 +30049,15 @@ function DD(r, s, e, v) {
     return r
 }
 function DB(func, obj) {
-    return function () {
-        var a = Array.prototype.slice.call(arguments)
+    return function (...args) {
+        var a = Array.prototype.slice.call(args)
         a.unshift(obj)
         return func.apply(null, a)
     }
 }
 function DC(func, obj, objo) {
-    return function () {
-        var a = Array.prototype.slice.call(arguments)
+    return function (...args) {
+        var a = Array.prototype.slice.call(args)
         a.unshift(obj, objo)
         return func.apply(null, a)
     }
