@@ -2067,7 +2067,7 @@ function httpSocketWriteAsync(fileData, fileOffset, buf, off, len, cb) {
                         let key = line.substr(0, line.indexOf(":"))
                         let value = line.substr(line.indexOf(":") + 2)
                         if (key.toLowerCase() === "host") {
-                            if (window.location.protocol == "https:") {
+                            if (globalThis.location.protocol == "https:") {
                                 fileData.currRequest.url = "https://" + value + fileData.currRequest.url
                             } else {
                                 fileData.currRequest.url = "http://" + value + fileData.currRequest.url
