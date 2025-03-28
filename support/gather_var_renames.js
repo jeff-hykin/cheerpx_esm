@@ -22,12 +22,13 @@ export function getBadNames(code, {filter}={}) {
         filter = name=>name.length < 3
     }
     const tree = parser.parse(code)
+    const functionDefinitions = tree.rootNode.quickQuery(`(function_declaration (identifier) @funcName) @funcDefinition`).map(node => [node.funcName.text, node.funcDefinition.text]).filter(([name, definition])=>filter(name))
     const identifiers = tree.rootNode.quickQuery(`(identifier)`).map(node => node.text).filter(filter)
     const functionCalls = tree.rootNode.quickQuery(`(call_expression (identifier) @output)`).map(node => node.output.text).filter(filter)
     const funcCallFreq = frequencyCount(functionCalls, {sort: 1})
     const identifierFreq = frequencyCount(identifiers, {sort: 1})
     const ordedBadNames = new Set([...funcCallFreq.keys(), ...identifierFreq.keys(), ])
-    return [...ordedBadNames]
+    return [[...ordedBadNames], Object.fromEntries(functionDefinitions)]
 }
 
 export async function executePromptDefault(prompt) {
@@ -45,10 +46,13 @@ export async function executeOpenAiPrompt(prompt) {
 }
 
 export function getBadNamesAndContext(code, {filter}={}) {
-    const badNames = getBadNames(code, {filter})
+    const [badNames, functionDefinitions] = getBadNames(code, {filter})
     const badNamesAndContexts = {}
     for (let each of badNames) {
         badNamesAndContexts[each] = [...code.matchAll(regex`((?:(?:\n|^).+){0,10}\\b${each}\\b(?:.+\n){0,10})`.g)].map(match => match[1])
+        if (functionDefinitions[each]) {
+            badNamesAndContexts[each].unshift(functionDefinitions[each])
+        }
     }
     return badNamesAndContexts
 }
