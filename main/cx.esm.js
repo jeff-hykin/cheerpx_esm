@@ -8979,7 +8979,7 @@ function vh(l, m) {
         c = l[m].a6
         f = new Blob(new Array(f.a1))
         h = URL.createObjectURL(f)
-        f = new Worker(h, { type: "module" })
+        f = new Worker(h)
         h = new MessageChannel()
         j = h.port1
         r = {
