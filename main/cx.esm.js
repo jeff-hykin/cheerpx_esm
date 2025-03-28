@@ -1,4 +1,10 @@
 "use strict"
+const RealWorker = globalThis.Worker
+class Worker extends RealWorker { // my patch
+    constructor(...args) {
+        super(...args)
+    }
+}
 var intMultiply_1 = Math.imul
 var oSlot = 0
 var nullArray = [null]
@@ -8939,7 +8945,7 @@ function d9(x, u) {
             f.a1 = vg
             f.a7 = x
             f.a6 = a
-            h = cu()
+            h = getStackTraceUrl()
             h = h.concat("workerclock.js")
             f.a8 = h
             h = fetch(h)
@@ -9035,33 +9041,43 @@ function vg(a, b) {
     var c = null
     if (!(a.i5 | 0)) c = a.a8
 }
-function cu() {
-    var l = 0,
-        h = -0,
-        j = 0,
-        f = null,
-        a = null,
-        c = 0
-    f = new Array()
+function getStackTraceUrl() {
+    // Initialize variables
+    let stackTrace = []
+    let errorLocation = 0
+    let httpIndex = -1
+    let httpsIndex = 0
+    let chromeExtensionIndex = 0
+    const targetScript = "/cx_esm.js"
+
+    // Capture the current stack trace
     try {
         throw new Error()
-    } catch (e) {
-        f.push(e.stack)
+    } catch (error) {
+        stackTrace.push(error.stack)
     }
-    f = f[0]
-    a = "/cx_esm.js"
-    l = f.indexOf(a)
-    a = "http:"
-    h = +(l | 0)
-    c = f.lastIndexOf(a, h)
-    a = "https:"
-    j = f.lastIndexOf(a, h)
-    c = (c | 0) > (j | 0) ? c | 0 : j | 0
-    if ((c | 0) < 0) {
-        a = "chrome-extension:"
-        c = f.lastIndexOf(a, h)
+
+    // Extract the stack trace
+    const stack = stackTrace[0]
+
+    // Find the position of the target script in the stack trace
+    errorLocation = stack.indexOf(targetScript)
+
+    // Check for the presence of "http:", "https:", or "chrome-extension:" in the stack trace
+    httpIndex = stack.lastIndexOf("http:", errorLocation)
+    httpsIndex = stack.lastIndexOf("https:", errorLocation)
+    chromeExtensionIndex = stack.lastIndexOf("chrome-extension:", errorLocation)
+
+    // Choose the most relevant index (the last occurrence of http or https)
+    const urlIndex = Math.max(httpIndex, httpsIndex, chromeExtensionIndex)
+
+    // If no valid URL is found, return an empty string
+    if (urlIndex < 0) {
+        return ""
     }
-    return f.substring(+(c | 0), +((l + 1) | 0))
+
+    // Return the portion of the stack trace that corresponds to the URL of interest
+    return stack.substring(urlIndex, errorLocation + 1)
 }
 function io(c, a) {
     var h = null,
@@ -9140,7 +9156,7 @@ function ii(n, l, j, h) {
     a.a6 = l
     c = a.a2.a[a.a2.o - 1]
     n.a0 = c
-    c = cu()
+    c = getStackTraceUrl()
     a.a9 = c
     c = c.concat(j)
     c = c
@@ -10424,7 +10440,7 @@ function dw(h, f, c) {
     }
     a: {
         if ((j | 0) !== 3) {
-            a = cu()
+            a = getStackTraceUrl()
             a = a.concat("./tun/tailscale_tun_auto.js")
             l = import(a)
             a = mA
@@ -10452,7 +10468,7 @@ function cH() {
     })
     l = a.fullfill
     j = a.reject
-    a = cu()
+    a = getStackTraceUrl()
     aQ = 1
     a = a.concat("cheerpOS.js")
     f2 = "script"
@@ -10501,7 +10517,7 @@ function dv(c) {
     var f = null,
         a = null
     if (c.a8 !== null) {
-        a = cu()
+        a = getStackTraceUrl()
         a = a.concat("cxbridge.js")
         c.a6 = new Worker(a)
         c.a6.onmessage = c.a2
