@@ -10,10 +10,20 @@
 import { Project } from "npm:ts-morph"
 
 export async function renameVariables(filePath, nameMapping) {
-    for (const [key, value] of Object.entries(nameMapping)) {
-        // ensure all are actually unique
-        nameMapping[key] = `${value}_${Math.random().toString().substr(2, 9)}`
+    const code = Deno.readTextFileSync(filePath)
+    
+    // ensure all names are actually unique
+    const newNames = new Set(Object.values(nameMapping))
+    for (const [oldName, newNameOriginal] of Object.entries(nameMapping)) {
+        let inc = 0
+        let newName = newNameOriginal
+        while (code.includes(newName) || nameMapping[newName] || newNames.has(newName)) {
+            newName = `${newNameOriginal}_${++inc}`
+        }
+        newNames.add(newName)
+        nameMapping[oldName] = newName
     }
+    
     // Create a new ts-morph Project
     const project = new Project({
         compilerOptions: {
