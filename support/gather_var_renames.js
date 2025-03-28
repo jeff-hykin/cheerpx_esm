@@ -14,7 +14,10 @@ var $$ = (...args)=>$(...args).noThrow()
 
 const parser = await parserFromWasm(javascript) // path or Uint8Array
 
-export function getBadNames(code, {filter=name=>name.length < 3}={}) {
+export function getBadNames(code, {filter}={}) {
+    if (filter == null) {
+        filter = name=>name.length < 3
+    }
     const tree = parser.parse(code)
     const identifiers = tree.rootNode.quickQuery(`(identifier)`).map(node => node.text).filter(filter)
     const functionCalls = tree.rootNode.quickQuery(`(call_expression (identifier) @output)`).map(node => node.output.text).filter(filter)
@@ -29,8 +32,8 @@ export async function executePromptDefault(prompt) {
     return output
 }
 
-export function getBadNamesAndContext(code) {
-    const badNames = getBadNames(code)
+export function getBadNamesAndContext(code, {filter}={}) {
+    const badNames = getBadNames(code, {filter})
     const badNamesAndContexts = {}
     for (let each of badNames) {
         badNamesAndContexts[each] = [...code.matchAll(regex`((?:(?:\n|^).+){0,5}\\b${each}\\b(?:.+\n){0,5})`.g)].map(match => match[1])
@@ -38,8 +41,8 @@ export function getBadNamesAndContext(code) {
     return badNamesAndContexts
 }
 
-export async function getReplacementNames(code, {executePrompt=executePromptDefault, maxRetries=3, onProgress=(index, total, badName, newName)=>0}={}) {
-    const badNamesAndContexts = getBadNamesAndContext(code)
+export async function getReplacementNames(code, {executePrompt=executePromptDefault, maxRetries=3, onProgress=(index, total, badName, newName)=>0, filter=name=>name.length < 3}={}) {
+    const badNamesAndContexts = getBadNamesAndContext(code, {filter})
     const replacementNames = {}
     let index = 0
     const entries = Object.entries(badNamesAndContexts)
@@ -54,12 +57,17 @@ export async function getReplacementNames(code, {executePrompt=executePromptDefa
             }
             result = await executePrompt((prompt + "\nPlease make sure your answer is inside of brackets like this: {{BETTER_NAME}}"))
         }
-        let match = result.match(/{{(\w+)}}/)
+        // use last match not first 
+        let match = [...result.matchAll(/{{([\w]+)}}/g)].at(-1)
         if (match) {
             newName = match[1]
         }
+        
+        if (newName === "BETTER_NAME" || filter(newName)) {
+            newName = name
+        }
         replacementNames[name] = newName
-        onProgress(index++, entries.length, name, newName)
+        onProgress(++index, entries.length, name, newName)
     }
     return replacementNames
 }
